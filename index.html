@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol-Verwerker</title>
+</head>
+<body>
+    <div>
+        <input type="file" name="file" id="file" accept=".csv" > <br>
+        <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
+        <input type="button" id="btnsubmit" value="Download Sequentietabel" onclick="sequentietabel()" >
+        <input type="button" id="btnsubmit" value="Download Frequentietabel" onclick="frequentietabel()" >
+   </div>
+</body>
+<script src="sequentietabel_generator.js"></script>
+<script src="frequentietabel_generator.js"></script>
+</html>
