@@ -51,7 +51,7 @@ nav ul li:hover{
   margin-right: auto;
   padding: 1rem;
   border-radius: 5px;
-  border: 2px;
+  border: 4px;
   border-style: solid;
   border-color: var(--colour-primary);
 }
@@ -85,4 +85,11 @@ nav ul li:hover{
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.button{
+  background-color: var(--colour-primary);
+  color: white;
+  padding: .5rem;
+  border-radius: 5px;
 }
