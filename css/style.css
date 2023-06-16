@@ -12,40 +12,64 @@
 }
 
 a {
-  color: inherit; 
-  text-decoration: inherit; 
+  color: inherit;
+  text-decoration: inherit;
 }
 
 body {
   background-color: var(--colour-background);
 }
 
-header, nav{
-  background-color: var(--colour-secondary);
-  color: white;
-  justify-content: center;
-  text-align: center;
-}
-
-nav ul{
+ul.sidenav {
+  width: 100%;
+  height: auto;
+  position: relative;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--colour-secondary);
+  overflow: auto;
 }
 
-nav ul li{
-  padding-bottom: .5rem;
-  font-size: 1.5rem;
+ul.sidenav li a {
+  float: left;
+  padding: 15px;
+  display: block;
+  color: white;
+  text-decoration: none;
 }
 
-nav ul li:hover{
+ul.sidenav li a.active {
+  background-color: var(--colour-primary);
+  color: white;
+}
+
+ul.sidenav li a:hover:not(.active, .titel) {
   background-color: var(--colour-hover);
-  max-width: 25%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  color: white;
 }
 
-.container{
-  margin-top: 5%;
+ul.sidenav li a.titel{
+  font-size: medium;
+  color: white;
+}
+
+div.content {
+  padding: 1px 16px;
+  height: 1000px;
+  margin-left: 0;
+}
+
+
+@media screen and (max-width: 400px) {
+  ul.sidenav li a {
+    text-align: center;
+    float: none;
+  }
+}
+
+.container {
+  margin-top: 2rem;
   background-color: white;
   width: 50%;
   margin-left: auto;
@@ -61,7 +85,8 @@ nav ul li:hover{
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
@@ -77,7 +102,7 @@ nav ul li:hover{
   border-color: var(--colour-primary);
   border-style: solid;
   font-size: small;
- 
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
@@ -88,7 +113,7 @@ nav ul li:hover{
   visibility: visible;
 }
 
-.button{
+.button {
   background-color: var(--colour-primary);
   color: white;
   padding: .5rem;

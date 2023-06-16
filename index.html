@@ -10,36 +10,25 @@
 </head>
 
 <body>
-    <header>
-        <a href="index.html">
-            <h1>
-                Protocol-Verwerker
-            </h1>
-        </a>
-    </header>
-    <nav>
-        <ul>
-            <a href="index.html">
-                <li>
-                    Verwerker
-                </li>
-            </a>
-            <a href="handleiding.html">
-                <li>
-                    Handleiding
-                </li>
-            </a>
-        </ul>
-    </nav>
+    <ul class="sidenav">
+        <li><a class="titel" href="index.html">Protocol-Verwerker</a></li>
+        <li><a class="active" href="index.html">Verwerker</a></li>
+        <li><a href="handleiding.html">Handleiding</a></li>
+    </ul>
 
-    <div class="container">
-        <input type="file" name="file" id="file" accept=".csv"> <br> <br>
-        <div class="tooltip">Frequentie <br>
-          <span class="tooltiptext">Hoeveel minuten samen gegroepeerd worden. Heeft alleen impact op de frequentietabel.</span>
-        </div> <br>
-        <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
-        <input class="button" type="button" id="btnsubmit" value="Download Frequentietabel" onclick="frequentietabel()">
-        <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel" onclick="sequentietabel()">
+    <div class="content">
+        <div class="container">
+            <input type="file" name="file" id="file" accept=".csv"> <br> <br>
+            <div class="tooltip">Frequentie <br>
+                <span class="tooltiptext">Hoeveel minuten samen gegroepeerd worden. Heeft alleen impact op de
+                    frequentietabel.</span>
+            </div> <br>
+            <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
+            <input class="button" type="button" id="btnsubmit" value="Download Frequentietabel"
+                onclick="frequentietabel()">
+            <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel"
+                onclick="sequentietabel()">
+        </div>
     </div>
 </body>
 <script src="js/sequentietabel_generator.js"></script>
