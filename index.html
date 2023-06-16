@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol-Verwerker</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div>
-        <input type="file" name="file" id="file" accept=".csv" > <br>
-        <label for="frequent">Frequentie</label>
-        <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
-        <input type="button" id="btnsubmit" value="Download Sequentietabel" onclick="sequentietabel()" >
-        <input type="button" id="btnsubmit" value="Download Frequentietabel" onclick="frequentietabel()" >
-   </div>
+    <header>
+        <a href="index.html">
+            <h1>
+                Protocol-Verwerker
+            </h1>
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <a href="index.html">
+                <li>
+                    Verwerker
+                </li>
+            </a>
+            <a href="#handleiding">
+                <li>
+                    Handleiding
+                </li>
+            </a>
+        </ul>
+    </nav>
+
+    <div class="verwerker">
+        <input type="file" name="file" id="file" accept=".csv"> <br>
+
+        <input id="keuze_seq" type="button" value="Sequentietabel">
+        <input id="keuze_freq" type="button" value="Frequentie">
+
+        <br> <br>
+        <div class="frequentie">
+            <label for="frequentie">Frequentie</label>
+            <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
+            <input type="button" id="btnsubmit" value="Download Frequentietabel" onclick="frequentietabel()">
+        </div>
+        <input class="sequentie" type="button" id="btnsubmit" value="Download Sequentietabel"
+            onclick="sequentietabel()">
+    </div>
 </body>
 <script src="js/sequentietabel_generator.js"></script>
 <script src="js/frequentietabel_generator.js"></script>
+
 </html>

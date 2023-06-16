@@ -1,0 +1,3 @@
+function selecteerFrequentie(){
+    (".sequentie").hide();
+}
