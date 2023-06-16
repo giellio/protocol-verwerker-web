@@ -28,17 +28,25 @@ function sequentietabel() {
                     rawRow = rawRow.split(",");
                     rawRow.shift();
                     var elementenRow = [];
+                    //verzamel alle gedragselementen netjes in een 2d array
                     for (var elementNumber = 0; elementNumber < rawRow.length; elementNumber++) {
                          var element = rawRow[elementNumber];
-                         element = element.split("\r")[0];
-                         elementenRow.push(element.toString().toLowerCase().replace(" ", ""));
+                         element = element.replace('"', "").replace("\r", "");
+                         element = element.split(",");
+                         if (Array.isArray(element)) {
+                              for (let x of element) {
+                                   elementenRow.push(x.toString().toLowerCase().trim());
+                              }
+                         } else {
+                              elementenRow.push(element.toString().toLowerCase().trim());
+                         }
                     }
                     gedrag.push(elementenRow);
                }
-               console.log("gedrag: " + gedrag);
 
                var elementen = [];
 
+               //maak een lijstje met alle verschillende gedrageenheden
                for (let row of gedrag) {
                     for (let x of row) {
                          try {
@@ -51,10 +59,9 @@ function sequentietabel() {
                     }
                }
 
-               console.log("elementen: " + elementen);
-
                var tabel = [];
 
+               //bereid de sequentietabel voor, zet streepjes bij hetzelfde gedrag
                for (let i of elementen) {
                     let tabelRow = [];
                     for (let j of elementen) {
@@ -64,27 +71,24 @@ function sequentietabel() {
                               tabelRow.push(0);
                          }
                     }
-                    console.log("tabelrow: " + [tabelRow]);
                     tabel.push(tabelRow);
                }
-               console.table(tabel);
 
+               //tel alle sequenties
                var huidigeElement, laatsteElement = "";
                for (let rij of gedrag) {
-                    console.log("rij: " + rij);
                     for (let element of rij) {
-                         console.log("huidigelement: " + huidigeElement + " - laatsteelement: " + laatsteElement);
                          huidigeElement = element;
                          if (laatsteElement != huidigeElement && laatsteElement != "") {
                               let rij = tabel[elementen.indexOf(laatsteElement)];
                               let element = rij[elementen.indexOf(huidigeElement)];
-                              console.log(element);
                               rij[elementen.indexOf(huidigeElement)] += 1;
                          }
                          laatsteElement = huidigeElement
                     }
                }
 
+               //voeg de elementen toe als headers
                for (let element of elementen) {
                     let index = elementen.indexOf(element);
                     tabel[index].unshift(element);
@@ -92,8 +96,7 @@ function sequentietabel() {
                elementen.unshift("");
                tabel.unshift(elementen);
 
-               console.table(tabel);
-
+               //maak het downloadbare csv bestand
                let csvContent = "data:text/csv;charset=utf-8,";
 
                tabel.forEach(function (rowArray) {

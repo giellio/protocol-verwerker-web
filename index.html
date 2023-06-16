@@ -33,22 +33,17 @@
     </nav>
 
     <div class="verwerker">
-        <input type="file" name="file" id="file" accept=".csv"> <br>
-
-        <input id="keuze_seq" type="button" value="Sequentietabel">
-        <input id="keuze_freq" type="button" value="Frequentie">
-
-        <br> <br>
-        <div class="frequentie">
-            <label for="frequentie">Frequentie</label>
-            <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
-            <input type="button" id="btnsubmit" value="Download Frequentietabel" onclick="frequentietabel()">
-        </div>
-        <input class="sequentie" type="button" id="btnsubmit" value="Download Sequentietabel"
-            onclick="sequentietabel()">
+        <input type="file" name="file" id="file" accept=".csv"> <br> <br>
+        <div class="tooltip">Frequentie <br>
+          <span class="tooltiptext">Hoeveel minuten samen gegroepeerd worden.</span>
+        </div> <br>
+        <input type="number" id="frequentie" name="frequentie" min="1" value="1"> <br><br>
+        <input type="button" id="btnsubmit" value="Download Frequentietabel" onclick="frequentietabel()">
+        <input class="sequentie" type="button" id="btnsubmit" value="Download Sequentietabel" onclick="sequentietabel()">
     </div>
 </body>
 <script src="js/sequentietabel_generator.js"></script>
 <script src="js/frequentietabel_generator.js"></script>
+<script src="js/keuze.js"></script>
 
 </html>

@@ -30,41 +30,47 @@ function frequentietabel() {
                // Split by line break to gets rows Array
                var rowData = csvdata.split('\n');
 
-               var alleTijden = [], tijden = [];
-               var gedrag = [];
+               var alleTijden = [], tijden = [], gedrag = [];
                // Loop on the row Array (change row=0 if you also want to read 1st row)
                for (var row = 1; row < rowData.length; row++) {
                     var rawRow = rowData[row];
                     rawRow = rawRow.split(",");
                     alleTijden.push(rawRow.shift());
                     var elementenRow = [];
+                    //elementen netjes in 2d array gooien
                     for (var elementNumber = 0; elementNumber < rawRow.length; elementNumber++) {
                          var element = rawRow[elementNumber];
-                         element = element.split("\r")[0];
-                         elementenRow.push(element.toString().toLowerCase().replace(" ", ""));
+                         element = element.replace('"', "").replace("\r", "");
+                         element = element.split(",");
+                         if (Array.isArray(element)) {
+                              for (let x of element) {
+                                   elementenRow.push(x.toString().toLowerCase().trim());
+                              }
+                         } else {
+                              elementenRow.push(element.toString().toLowerCase().trim());
+                         }
                     }
                     gedrag.push(elementenRow);
                }
-               console.log("gedrag: " + gedrag);
-               console.log(alleTijden);
 
+               //verzamel de tijden voor de headers van de tijdsintervallen
                for (i = 0; i < alleTijden.length; i += interval) {
-                    if(i+interval-1 < alleTijden.length){
-                    tijden.push(alleTijden[i] + "-" + alleTijden[i+interval-1]);
-                    }else{
+                    if (i + interval - 1 < alleTijden.length) {
+                         tijden.push(alleTijden[i] + "-" + alleTijden[i + interval - 1]);
+                    } else {
                          let over = alleTijden.length % interval;
-                         if(over <= 1){
+                         if (over <= 1) {
                               tijden.push(alleTijden[i]);
                          }
-                         else{
-                              tijden.push(alleTijden[i] + "-" + alleTijden[i+over-1])
+                         else {
+                              tijden.push(alleTijden[i] + "-" + alleTijden[i + over - 1])
                          }
                     }
                }
-               console.log("tijden: " + tijden);
 
                var elementen = [];
-
+               
+               //verzamel alle verschillende elementen
                for (let row of gedrag) {
                     for (let x of row) {
                          try {
@@ -79,6 +85,8 @@ function frequentietabel() {
 
                var tabel = [];
                var nietGeteldetabel = [];
+
+               //verzamel alle gedragselementen binnen een interval
                for (i = 0; i < (gedrag.length); i += interval) {
 
                     var elementenInterval = [];
@@ -88,27 +96,23 @@ function frequentietabel() {
                     nietGeteldetabel.push(elementenInterval);
                }
 
-               for (i = 0; i < (gedrag.lenght % interval); i++) {
-                    tabel[tabel.lenght - 1].pop();
-               }
 
+               //tel de elementen binnen hun frequentie
                for (let rij of nietGeteldetabel) {
                     var elementenRow = [];
                     for (i = 0; i < elementen.length; i++) {
                          elementenRow[i] = 0;
                     }
-                    for (let rij2 of rij) {
+                    for (let kolom of rij) {
                          try {
-                              for (let element of rij2) {
+                              for (let element of kolom) {
                                    if (elementen.indexOf(element) >= 0) {
                                         elementenRow[elementen.indexOf(element)]++;
                                    }
-                              }
+                              } throw "empty"
                          } catch (error) {
-                              for (let element of rij) {
-                                   if (elementen.indexOf(element) >= 0) {
-                                        elementenRow[elementen.indexOf(element)]++;
-                                   }
+                              if(!error == "empty"){
+                                  alert(error); 
                               }
                          }
 
@@ -116,15 +120,16 @@ function frequentietabel() {
                     tabel.push(elementenRow);
                }
 
+               //voeg de tijden toe aan de tabel headers
                for (let tijd of tijden) {
-                    let index =  tijden.indexOf(tijd);
+                    let index = tijden.indexOf(tijd);
                     tabel[index].unshift(tijd);
                }
+               //voeg de elementen toe aan de tabel headers
                elementen.unshift("");
                tabel.unshift(elementen);
 
-               console.table(tabel);
-
+               //creeër het nieuwe csv bestand en maak deze beschikbaar als download
                let csvContent = "data:text/csv;charset=utf-8,";
 
                tabel.forEach(function (rowArray) {
