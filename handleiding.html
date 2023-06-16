@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol-Verwerker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/handleiding.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <h1>
+                Protocol-Verwerker
+            </h1>
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <a href="index.html">
+                <li>
+                    Verwerker
+                </li>
+            </a>
+            <a href="handleiding.html">
+                <li>
+                    Handleiding
+                </li>
+            </a>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 style="margin-top: 0;">
+            Stap 1: Exporteren
+        </h1>
+        <p>
+            Ga naar google spreadsheets, ga naar Bestand -> Downloaden -> Door komma's gescheiden waarden (.csv).
+        </p>
+        <img src="src/download-protocol.png" alt="download-protocol" style="width: 50%;">
+        <h1>
+            Stap 2: Uploaden
+        </h1>
+        <p>
+            Ga naar <a href="https://giellio.github.io/protocol-verwerker" target="_blank" rel="noopener noreferrer">de
+                verwerker</a> en upload je csv bestand.
+        </p>
+        <img src="src/upload-csv.png" alt="upload-csv" style="width: 75%;">
+        <h1>
+            Stap 3: Download je resultaten
+        </h1>
+        <p>
+            Kies een frequentie in minuten die samen worden gecalculeerd, hierbij gaat het programma ervanuit dat iedere regel een minuut is.<br>
+            Als je hem bijvoorbeeld instelt op 5, zal hij voor iedere 5 minuten tellen hoevaak ieder gedragselement voorkomt.<br>
+            Dit heeft geen invloed op de sequentietabel.
+        </p>
+        <p>
+            Druk vervolgens op de downloadknop van de tabel naar keuze.
+        </p>
+        <h1>
+            Stap 4: Importeer naar Google Spreadsheets
+        </h1>
+        <p>
+            Ga naar Bestand -> Importeer en kies het bestand dat je zojuist gedownload hebt.<br>
+            Kies de importeer-instelling die voor jou werken. Bij twijfel, kies nieuwe bladen invoegen en laat de rest op standaard staan.
+        </p>
+    </div>
+</body>
+<script src="js/sequentietabel_generator.js"></script>
+<script src="js/frequentietabel_generator.js"></script>
+<script src="js/keuze.js"></script>
+
+</html>

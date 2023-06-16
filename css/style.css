@@ -33,6 +33,7 @@ nav ul{
 
 nav ul li{
   padding-bottom: .5rem;
+  font-size: 1.5rem;
 }
 
 nav ul li:hover{
@@ -43,7 +44,7 @@ nav ul li:hover{
   margin-right: auto;
 }
 
-.verwerker{
+.container{
   margin-top: 5%;
   background-color: white;
   width: 50%;

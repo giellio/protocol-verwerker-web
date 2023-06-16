@@ -1,0 +1,19 @@
+ul{
+    list-style-type: none;
+}
+
+img{
+    margin-bottom: 1rem;
+}
+
+p a{
+    color: blue;
+}
+
+.container{
+    margin-top: 2rem;
+}
+.container h1{
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+}
