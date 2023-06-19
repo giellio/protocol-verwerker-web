@@ -14,7 +14,7 @@
         <li><a class="titel" href="index.html">Protocol-Verwerker</a></li>
         <li><a class="active" href="index.html">Verwerker</a></li>
         <li><a href="handleiding.html">Handleiding</a></li>
-        <li style="float: right;"><a href="https://github.com/giellio/protocol-verwerker">Github Pagina</a></li>
+        <li class="right-nav"><a href="https://github.com/giellio/protocol-verwerker">Github Pagina</a></li>
     </ul>
 
     <div class="content">
@@ -29,11 +29,16 @@
                 onclick="frequentietabel()">
             <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel"
                 onclick="sequentietabel()">
+                <br><br>
+                <div id="table" style="display: none;">
+
+                </div>
         </div>
     </div>
 </body>
 <script src="js/sequentietabel_generator.js"></script>
 <script src="js/frequentietabel_generator.js"></script>
-<script src="js/keuze.js"></script>
-
+<script src="js/create_table.js"></script>
+<script src="js/parse_data.js"></script>
+<script src="js/color_changer.js"></script>
 </html>

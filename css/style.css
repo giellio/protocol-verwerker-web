@@ -5,8 +5,9 @@
   padding: 0;
   font-family: 'Patua One', cursive;
   --colour-primary: #04AA6D;
-  --colour-secondary: #555;
+  --colour-secondary: #067a50;
   --colour-background: #999;
+  --colour-background-secondary: #555;
   --colour-hover: #333;
   text-align: center;
 }
@@ -27,7 +28,7 @@ ul.sidenav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: var(--colour-secondary);
+  background-color: var(--colour-background-secondary);
   overflow: auto;
 }
 
@@ -60,9 +61,18 @@ div.content {
   margin-left: 0;
 }
 
+ul.sidenav li.right-nav{
+  float: right;
+}
 
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 550px) {
   ul.sidenav li a {
+    text-align: center;
+    float: none;
+  }
+
+  ul.sidenav li.right-nav{
     text-align: center;
     float: none;
   }
@@ -71,7 +81,7 @@ div.content {
 .container {
   margin-top: 2rem;
   background-color: white;
-  width: 50%;
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
@@ -118,4 +128,17 @@ div.content {
   color: white;
   padding: .5rem;
   border-radius: 5px;
+}
+
+.button:hover{
+  background-color: var(--colour-secondary);
+}
+
+table{
+  margin: auto;
+}
+
+table, th, td{
+  border: 1px solid var(--colour-primary);
+  border-collapse: collapse;
 }
