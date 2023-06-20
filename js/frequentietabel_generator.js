@@ -80,8 +80,6 @@ function frequentietabel() {
                          }
                     }
 
-                    createTable([elementen], 'elementen');
-
                     for (let x of elementen) {
                          changeBackgroundColor(getColor(elementen.indexOf(x)), 'elementen-0-' + elementen.indexOf(x));
                     }

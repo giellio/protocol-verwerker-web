@@ -3,6 +3,11 @@ function changeBackgroundColor(color, id){
     element.style.background = color;
 }
 
+function changeTextColor(color, id){
+    var element = document.getElementById(id);
+    element.style.color = color;
+}
+
 function getColor(id){
     var arr = [
         '#eb4034',
@@ -19,6 +24,8 @@ function getColor(id){
     var color 
     if(id == -1){
         color = 'none';
+    } else if(id == -2) {
+        color = '#555';
     } else{
         color = arr[id % arr.length];
     }
