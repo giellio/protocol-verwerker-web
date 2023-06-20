@@ -142,3 +142,7 @@ table, th, td{
   border: 1px solid var(--colour-primary);
   border-collapse: collapse;
 }
+
+#frequentie{
+  width: 15%;
+}
