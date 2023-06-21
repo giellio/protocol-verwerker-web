@@ -1,6 +1,7 @@
 function frequentietabel() {
      const content = document.getElementById("table");
      content.textContent = '';
+     const animatie = document.getElementById('animatie').checked;
      var files = document.querySelector('#file').files;
      var interval = document.querySelector('#frequentie').value;
      interval = Number(interval);
@@ -74,28 +75,24 @@ function frequentietabel() {
                                    if (err = "not in list") {
                                         elementen.push(x);
                                         changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
-                                        await timer(250);
+                                        if(animatie){
+                                             await timer(250);
+                                        }
                                    }
                               }
                          }
                     }
 
-                    for (let x of elementen) {
-                         changeBackgroundColor(getColor(elementen.indexOf(x)), 'elementen-0-' + elementen.indexOf(x));
-                    }
+                    if(animatie){
+                         await timer(2000);
 
-                    await timer(2000);
+                    }
 
                     for (let row of gedrag) {
                          for (let x of row) {
                               changeBackgroundColor(getColor(-1), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
                          }
                     }
-
-                    for (let x of elementen) {
-                         changeBackgroundColor(getColor(-1), 'elementen-0-' + elementen.indexOf(x));
-                    }
-
 
                     var tabel = [];
                     var nietGeteldetabel = [];
@@ -180,7 +177,9 @@ function frequentietabel() {
                                         document.getElementById('frequentie-'+ (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1)).textContent = tabel[nietGeteldetabel.indexOf(rij) + 1][elementen.indexOf(element) + 1];
                                          
                                         changeBackgroundColor(getColor(elementen.indexOf(element)), 'teltabel-'+ nietGeteldetabel.indexOf(rij) + '-' + (i));
-                                        await timer(100);
+                                        if(animatie){
+                                             await timer(100);
+                                        }
                                         changeBackgroundColor(getColor(-1), 'frequentie-'+ (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1));
                                    } throw "empty"
                               } catch (error) {

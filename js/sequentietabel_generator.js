@@ -1,5 +1,6 @@
 function sequentietabel() {
      const content = document.getElementById("table");
+     const animatie = document.getElementById('animatie').checked;
      content.textContent = '';
      var files = document.querySelector('#file').files;
 
@@ -48,13 +49,18 @@ function sequentietabel() {
                                    if (err = "not in list") {
                                         elementen.push(x);
                                         changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
-                                        await timer(250);
+                                        if(animatie){
+                                             await timer(250);
+                                        }
+                                        
                                    }
                               }
                          }
                     }
 
-                    await timer(1000);
+                    if(animatie){
+                         await timer(1000);
+                    }
 
                     for (let row of gedrag) {
                          for (let x of row) {
@@ -116,8 +122,10 @@ function sequentietabel() {
                               if (laatsteId != '') {
                                    console.log(changeBackgroundColor(getColor(-1), laatsteId));
                               }
-
-                              await timer(250);
+                              
+                              if(animatie){
+                                   await timer(100);
+                              }
 
                               changeBackgroundColor(getColor(-1), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-'+ (elementen.indexOf(laatsteElement) + 1));
                               changeTextColor('inherit', 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-'+ (elementen.indexOf(laatsteElement) + 1));
