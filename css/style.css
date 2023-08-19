@@ -146,3 +146,7 @@ table, th, td{
 #frequentie{
   width: 15%;
 }
+
+#table{
+  overflow-x: auto;
+}
