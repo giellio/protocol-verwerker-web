@@ -42,7 +42,7 @@ async function ethogram(files, only = false) {
     console.log("ethogram")
     console.table(ethogram)
 
-    var csvContent;
+    var csvContent = '';
 
     ethogram.forEach(function (rowArray) {
         let row = rowArray.join(",");

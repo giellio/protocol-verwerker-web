@@ -190,3 +190,15 @@ td {
 #table{
   overflow-x: auto;
 }
+
+#github img{
+  height: 46px;
+  padding: auto;
+  margin: auto;
+}
+
+#github{
+  display: inline;
+  height: 50px;
+  padding: 0;
+}

@@ -22,11 +22,12 @@ async function create(type) {
         if (type == "all" && files.length > 1) {
             for (let index = 0; index < files.length; index++) {
                 const file = files[index];
-                var frequentieTabel = await frequentietabel(file), sequentieTabel = await sequentietabel(file);
-                console.log(sequentieTabel)
                 popupText(`Frequentietabel genereren - ${index + 1}/${files.length}`)
-                zip.folder(file.name).file("frequentietabel.csv", frequentieTabel)
+                var frequentieTabel = await frequentietabel(file);
                 popupText(`Sequentietabel genereren - ${index + 1}/${files.length}`)
+                var sequentieTabel = await sequentietabel(file);
+                console.log(sequentieTabel)
+                zip.folder(file.name).file("frequentietabel.csv", frequentieTabel)
                 zip.folder(file.name).file("sequentietabel.csv", sequentieTabel)
             }
             popupText(`Ethogram genereren`)
@@ -55,9 +56,13 @@ async function create(type) {
             }
             zipNaam = "sequentietabellen"
         }
-
-        popupText(`Bestanden inpakken`);
-        downloadZip(zip, zipNaam);
+        if (type == "e") {
+            popupText(`Ethogram genereren`)
+            ethogram(files, true);
+        } else {
+            popupText(`Bestanden inpakken`);
+            downloadZip(zip, zipNaam);
+        }
         popupText("Download beschikbaar");
         await timer(1000);
         closePopup();
