@@ -83,7 +83,6 @@ function frequentietabel(file, only = false) {
                                                   changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
                                                   await timer(250);
                                              }
-
                                         }
                                    }
                               }
@@ -126,9 +125,7 @@ function frequentietabel(file, only = false) {
                                         }
                                    }
                               }
-
                               visueelNietGeteldeTabel.push(newRow);
-
                          }
 
                          nietGeteldetabel = [];
@@ -147,13 +144,11 @@ function frequentietabel(file, only = false) {
                               visueelNietGeteldeTabel[index].unshift(tijd);
                          }
 
-
                          if (animatie) createTable(visueelNietGeteldeTabel, 'teltabel');
 
                          var tabel = [], elemtenRow = [];
                          for (let element of elementen) {
                               elemtenRow.push(element);
-
                          }
                          tabel.push(elemtenRow);
 
@@ -198,7 +193,6 @@ function frequentietabel(file, only = false) {
                                    } catch (error) {
                                         if (!error == "empty") {
                                              alert(error);
-
                                         }
                                    }
 
@@ -238,5 +232,4 @@ function frequentietabel(file, only = false) {
                alert(err);
           }
      });
-
 }

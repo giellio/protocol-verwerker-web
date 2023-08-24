@@ -10,8 +10,6 @@ function sequentietabel(file, only = false) {
                content.textContent = '';
           let csvRows = [];
 
-
-
           // FileReader Object
           var reader = new FileReader();
 
@@ -37,7 +35,6 @@ function sequentietabel(file, only = false) {
                var gedrag = gedragRaw[0];
                if (animatie) createTable(visueel, 'protocol');
 
-
                var elementen = [];
 
                // Functie die een bepaalde tijd wacht voordat het verder gaat. Hiermee wordt een animatie-effect bereikt.
@@ -51,10 +48,8 @@ function sequentietabel(file, only = false) {
                               } catch (err) {
                                    if (err = "not in list") {
                                         elementen.push(x);
-                                     
                                         if (animatie) {
                                              changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
-
                                              await timer(250); // Wacht 250 milliseconden als er een animatie wordt weergegeven.
                                         }
                                    }
@@ -116,7 +111,6 @@ function sequentietabel(file, only = false) {
                               if (laatsteElement != huidigeElement && laatsteElement != "") {
                                    let rij = tabel[elementen.indexOf(laatsteElement)];
                                    rij[elementen.indexOf(huidigeElement)] += 1;
-
                                    if (animatie) {
                                         document.getElementById('sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1)).textContent = rij[elementen.indexOf(huidigeElement)];
                                         changeBackgroundColor(getColor(-2), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
@@ -153,7 +147,6 @@ function sequentietabel(file, only = false) {
                     tabel.unshift(elementen);
 
                     // Maak het downloadbare csv-bestand aan voor de sequentietabel.
-
                     tabel.forEach(function (rowArray) {
                          let row = rowArray.join(",");
                          csvRows.push(row);
@@ -173,7 +166,6 @@ function sequentietabel(file, only = false) {
                     } else {
                          resolve(csvContent); // Resolve the promise with csvContent
                     }
-
                }
 
                load();
