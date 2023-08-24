@@ -1,14 +1,14 @@
 // Functie om een sequentietabel te genereren.
-function sequentietabel() {
-     const content = document.getElementById("table");
-     const animatie = document.getElementById('animatie').checked;
-     content.textContent = '';
-     var files = document.querySelector('#file').files;
-
-     // Controleer of er een bestand is geselecteerd.
-     if (files.length > 0) {
-          // Geselecteerde bestand.
-          var file = files[0];
+function sequentietabel(file, only = false) {
+     return new Promise((resolve, reject) => {
+          const content = document.getElementById("table");
+          const animatie = document.getElementById('animatie').checked;
+          
+          if(animatie)
+               content.textContent = `${file.name} - Sequentietabel`;
+          else
+               content.textContent = '';
+          let csvRows = [];
 
           // FileReader Object
           var reader = new FileReader();
@@ -33,8 +33,7 @@ function sequentietabel() {
 
                // Zet de gegevens om in een leesbare tabel voor visuele weergave ('protocol') en toon deze.
                var gedrag = gedragRaw[0];
-               var alleTijden = gedragRaw[1];
-               createTable(visueel, 'protocol');
+               if (animatie) createTable(visueel, 'protocol');
 
                var elementen = [];
 
@@ -49,8 +48,8 @@ function sequentietabel() {
                               } catch (err) {
                                    if (err = "not in list") {
                                         elementen.push(x);
-                                        changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
                                         if (animatie) {
+                                             changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
                                              await timer(250); // Wacht 250 milliseconden als er een animatie wordt weergegeven.
                                         }
                                    }
@@ -60,12 +59,12 @@ function sequentietabel() {
 
                     if (animatie) {
                          await timer(1000); // Wacht 1 seconde als er een animatie wordt weergegeven.
-                    }
 
-                    // Reset de achtergrondkleur van de tabel naar de oorspronkelijke staat.
-                    for (let row of gedrag) {
-                         for (let x of row) {
-                              changeBackgroundColor(getColor(-1), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
+                         // Reset de achtergrondkleur van de tabel naar de oorspronkelijke staat.
+                         for (let row of gedrag) {
+                              for (let x of row) {
+                                   changeBackgroundColor(getColor(-1), 'protocol-' + gedrag.indexOf(row) + "-" + (row.indexOf(x) + 1));
+                              }
                          }
                     }
 
@@ -99,7 +98,7 @@ function sequentietabel() {
                          elementenRow.push(element);
                     }
                     visueelTabel.unshift(elementenRow);
-                    createTable(visueelTabel, 'sequentie');
+                    if (animatie) createTable(visueelTabel, 'sequentie');
 
                     // Tel alle sequenties en vul de sequentietabel met de juiste waarden.
                     var huidigeElement, huidigId, laatsteElement = "", laatsteId = '', vorigId = '';
@@ -108,30 +107,30 @@ function sequentietabel() {
                          for (i = 0; i < rij.length; i++) {
                               huidigeElement = rij[i];
                               huidigId = 'protocol-' + gedrag.indexOf(rij) + '-' + (i + 1);
-                              changeBackgroundColor(getColor(elementen.indexOf(huidigeElement)), huidigId);
+                              if (animatie) changeBackgroundColor(getColor(elementen.indexOf(huidigeElement)), huidigId);
                               if (laatsteElement != huidigeElement && laatsteElement != "") {
                                    let rij = tabel[elementen.indexOf(laatsteElement)];
                                    rij[elementen.indexOf(huidigeElement)] += 1;
-                                   document.getElementById('sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1)).textContent = rij[elementen.indexOf(huidigeElement)];
-                                   changeBackgroundColor(getColor(-2), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
-                                   changeTextColor('white', 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
+                                   if (animatie) {
+                                        document.getElementById('sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1)).textContent = rij[elementen.indexOf(huidigeElement)];
+                                        changeBackgroundColor(getColor(-2), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
+                                        changeTextColor('white', 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
+                                   }
                               }
 
-                              changeBackgroundColor(getColor(elementen.indexOf(huidigeElement)), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-0');
-                              changeBackgroundColor(getColor(elementen.indexOf(laatsteElement)), 'sequentie-0-' + (elementen.indexOf(laatsteElement) + 1));
-
-                              if (laatsteId != '') {
-                                   console.log(changeBackgroundColor(getColor(-1), laatsteId));
+                              if (animatie) {
+                                   changeBackgroundColor(getColor(elementen.indexOf(huidigeElement)), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-0');
+                                   changeBackgroundColor(getColor(elementen.indexOf(laatsteElement)), 'sequentie-0-' + (elementen.indexOf(laatsteElement) + 1));
                               }
 
                               if (animatie) {
                                    await timer(100); // Wacht 100 milliseconden als er een animatie wordt weergegeven.
-                              }
 
-                              changeBackgroundColor(getColor(-1), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
-                              changeTextColor('inherit', 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
-                              changeBackgroundColor(getColor(-1), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-0');
-                              changeBackgroundColor(getColor(-1), 'sequentie-0-' + (elementen.indexOf(laatsteElement) + 1));
+                                   changeBackgroundColor(getColor(-1), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
+                                   changeTextColor('inherit', 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-' + (elementen.indexOf(laatsteElement) + 1));
+                                   changeBackgroundColor(getColor(-1), 'sequentie-' + (elementen.indexOf(huidigeElement) + 1) + '-0');
+                                   changeBackgroundColor(getColor(-1), 'sequentie-0-' + (elementen.indexOf(laatsteElement) + 1));
+                              }
 
                               laatsteId = vorigId;
                               vorigId = huidigId;
@@ -148,26 +147,32 @@ function sequentietabel() {
                     tabel.unshift(elementen);
 
                     // Maak het downloadbare csv-bestand aan voor de sequentietabel.
-                    let csvContent = "data:text/csv;charset=utf-8,";
-
                     tabel.forEach(function (rowArray) {
                          let row = rowArray.join(",");
-                         csvContent += row + "\r\n";
+                         csvRows.push(row);
                     });
-                    var encodedUri = encodeURI(csvContent);
-                    var link = document.createElement("a");
-                    link.setAttribute("href", encodedUri);
-                    link.setAttribute("download", "sequentietabel.csv");
-                    document.body.appendChild(link); // Nodig voor Firefox.
 
-                    link.click(); // Hiermee wordt het gegevensbestand gedownload met de naam "sequentietabel.csv".
+                    let csvContent = csvRows.join("\r\n");
+
+                    if (only) {
+                         var encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+                         var link = document.createElement("a");
+                         link.setAttribute("href", encodedUri);
+                         link.setAttribute("download", "sequentietabel.csv");
+                         document.body.appendChild(link);
+
+                         link.click();
+                         resolve(); // Resolve the promise
+                    } else {
+                         resolve(csvContent); // Resolve the promise with csvContent
+                    }
                }
 
                load();
-
           };
 
-     } else {
-          alert("Selecteer een bestand.");
-     }
+          reader.onerror = function (event) {
+               reject(event.error); // Reject the promise in case of an error
+          };
+     });
 }

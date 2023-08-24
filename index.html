@@ -31,14 +31,10 @@
                     met de animatie.</span>
             </div> <br>
             <input type="checkbox" id="animatie" name="animatie"> <br><br>
-            <input class="button" type="button" id="btnsubmit" value="Download Frequentietabel"
-                onclick="create('f')">
-            <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel"
-                onclick="create('s')">
-            <input class="button" type="button" id="btnsubmit" value="Download Ethogram"
-                onclick="create('e')"> <br><br>
-            <input class="button" type="button" id="btnsubmit" value="Download Allemaal"
-                onclick="create('all')">
+            <input class="button" type="button" id="btnsubmit" value="Download Frequentietabel" onclick="create('f')">
+            <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel" onclick="create('s')">
+            <input class="button" type="button" id="btnsubmit" value="Download Ethogram" onclick="create('e')"> <br><br>
+            <input class="button" type="button" id="btnsubmit" value="Download Allemaal" onclick="create('all')">
             <br><br>
             <div id="table" style="display: none;">
 
@@ -47,20 +43,18 @@
     </div>
 
     <div id="loadPopup">
-        <p id="loadPopupText">
-        <div class="loader"></div> &nbsp; Text
-        </p>
+        <div class="loader"></div> &nbsp; <p id="loadPopupText"></p>
     </div>
 </body>
+<script src="js/parse_data.js"></script>
+<script src="js/popup.js"></script>
 <script src="JSZip/vendor/FileSaver.js"></script>
 <script src="JSZip/dist/jszip.min.js"></script>
-<script src="js/file_handler.js"></script>
 <script src="js/sequentietabel_generator.js"></script>
 <script src="js/frequentietabel_generator.js"></script>
 <script src="js/ethogram_generator.js"></script>
 <script src="js/create_table.js"></script>
-<script src="js/parse_data.js"></script>
 <script src="js/color_changer.js"></script>
-<script src="js/popup.js"></script>
 <script src="js/create.js"></script>
+
 </html>
