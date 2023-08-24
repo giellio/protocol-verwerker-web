@@ -7,43 +7,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol-Verwerker</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
     <ul class="sidenav">
         <li><a class="titel" href="index.html">Protocol-Verwerker</a></li>
         <li><a class="active" href="index.html">Verwerker</a></li>
-        <li><a href="test.html">Test</a></li>
         <li><a href="handleiding.html">Handleiding</a></li>
         <li class="right-nav"><a href="https://github.com/giellio/protocol-verwerker">Github Pagina</a></li>
     </ul>
 
     <div class="content">
         <div class="container">
-            <input type="file" name="file" id="file" accept=".csv"> <br> <br>
+            <input type="file" name="file" id="file" accept=".csv" multiple> <br> <br>
             <div class="tooltip">Frequentie <br>
                 <span class="tooltiptext">Hoeveel minuten samen gegroepeerd worden. Heeft alleen impact op de
                     frequentietabel.</span>
             </div> <br>
             <input type="number" id="frequentie" name="frequentie" min="1" max="100" value="5"> <br><br>
             <div class="tooltip">Animatie <br>
-                <span class="tooltiptext">Schakel de animatie in of uit. Voor als je na de 5e protocol wel klaar bent met de animatie.</span>
+                <span class="tooltiptext">Schakel de animatie in of uit. Voor als je na de 5e protocol wel klaar bent
+                    met de animatie.</span>
             </div> <br>
             <input type="checkbox" id="animatie" name="animatie"> <br><br>
             <input class="button" type="button" id="btnsubmit" value="Download Frequentietabel"
-                onclick="frequentietabel()">
+                onclick="create('f')">
             <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel"
-                onclick="sequentietabel()">
-                <br><br>
-                <div id="table" style="display: none;">
+                onclick="create('s')">
+            <input class="button" type="button" id="btnsubmit" value="Download Ethogram"
+                onclick="create('e')"> <br><br>
+            <input class="button" type="button" id="btnsubmit" value="Download Allemaal"
+                onclick="create('all')">
+            <br><br>
+            <div id="table" style="display: none;">
 
-                </div>
+            </div>
         </div>
     </div>
+
+    <div id="loadPopup">
+        <p id="loadPopupText">
+        <div class="loader"></div> &nbsp; Text
+        </p>
+    </div>
 </body>
+<script src="JSZip/vendor/FileSaver.js"></script>
+<script src="JSZip/dist/jszip.min.js"></script>
+<script src="js/file_handler.js"></script>
 <script src="js/sequentietabel_generator.js"></script>
 <script src="js/frequentietabel_generator.js"></script>
+<script src="js/ethogram_generator.js"></script>
 <script src="js/create_table.js"></script>
 <script src="js/parse_data.js"></script>
 <script src="js/color_changer.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/create.js"></script>
 </html>
