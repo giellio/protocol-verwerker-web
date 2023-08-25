@@ -19,7 +19,9 @@ Kies een frequentie in minuten die samen worden gecalculeerd, hierbij gaat het p
 iedere regel een minuut is.<br>
 Als je hem bijvoorbeeld instelt op 5, zal hij voor iedere 5 minuten tellen hoevaak ieder gedragselement
 voorkomt.<br>
-Dit heeft geen invloed op de sequentietabel.
+Dit heeft geen invloed op de sequentietabel of de ethogram.
+
+Kies of je een visuele animatie wilt zien, die laat zien hoe de tabellen (Exclusief ethogram) samengesteld worden.
 
 Druk vervolgens op de downloadknop van de tabel naar keuze.
 
