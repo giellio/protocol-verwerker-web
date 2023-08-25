@@ -50,7 +50,7 @@ ul.sidenav li a:hover:not(.active, .titel) {
   color: white;
 }
 
-ul.sidenav li a.titel{
+ul.sidenav li a.titel {
   font-size: medium;
   color: white;
 }
@@ -61,7 +61,7 @@ div.content {
   margin-left: 0;
 }
 
-ul.sidenav li.right-nav{
+ul.sidenav li.right-nav {
   float: right;
 }
 
@@ -72,7 +72,7 @@ ul.sidenav li.right-nav{
     float: none;
   }
 
-  ul.sidenav li.right-nav{
+  ul.sidenav li.right-nav {
     text-align: center;
     float: none;
   }
@@ -130,23 +130,75 @@ ul.sidenav li.right-nav{
   border-radius: 5px;
 }
 
-.button:hover{
+.button:hover {
   background-color: var(--colour-secondary);
 }
 
-table{
+table {
   margin: auto;
 }
 
-table, th, td{
+table,
+th,
+td {
   border: 1px solid var(--colour-primary);
   border-collapse: collapse;
 }
 
-#frequentie{
+#frequentie {
   width: 15%;
+}
+
+#loadPopup {
+  font-size: 20px;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  bottom: 1%;
+  color: black;
+  background-color: #ddd;
+  border: 1px solid var(--colour-primary);
+  border-radius: 4px;
+  width: auto;
+  height: auto;
+  padding: 0rem 1rem;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loader {
+  display: inline-block;
+  margin: auto;
+  border: 4px solid #EAF0F6;
+  border-radius: 50%;
+  border-top: 4px solid var(--colour-primary);
+  width: 10px;
+  height: 10px;
+  animation: spinner 2s linear infinite;
+}
+
+#loadPopupText{
+  display: inline;
+}
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 #table{
   overflow-x: auto;
+}
+
+#github img{
+  height: 46px;
+  padding: auto;
+  margin: auto;
+}
+
+#github{
+  display: inline;
+  height: 50px;
+  padding: 0;
 }
