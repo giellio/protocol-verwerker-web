@@ -11,7 +11,8 @@ async function processFile(file) {
 
             for (const row of gedragRaw[0]) {
                 for (const x of row) {
-                    if (elementen.indexOf(x) === -1) {
+                    x = x.trim();
+                    if (elementen.indexOf(x) == -1) {
                         elementen.push(x);
                     }
                 }
