@@ -10,7 +10,7 @@ async function processFile(file) {
             const elementen = [];
 
             for (const row of gedragRaw[0]) {
-                for (const x of row) {
+                for (var x of row) {
                     x = x.trim();
                     if (elementen.indexOf(x) == -1) {
                         elementen.push(x);
