@@ -27,9 +27,9 @@ function getColor (id) {
     '#d92736'
   ]
   let color
-  if (id == -1) {
+  if (id === -1) {
     color = 'none' // Als het ID -1 is, wordt de kleur 'none' teruggegeven, wat betekent dat er geen achtergrondkleur wordt ingesteld.
-  } else if (id == -2) {
+  } else if (id === -2) {
     color = '#555' // Als het ID -2 is, wordt de kleur '#555' teruggegeven, wat een donkergrijze kleur is.
   } else {
     color = arr[id % arr.length] // Als het ID positief is, wordt een kleur uit de array 'arr' gekozen op basis van het ID.

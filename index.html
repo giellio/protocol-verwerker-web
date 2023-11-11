@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol-Verwerker</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -31,10 +30,10 @@
                     met de animatie.</span>
             </div> <br>
             <input type="checkbox" id="animatie" name="animatie"> <br><br>
-            <input class="button" type="button" id="btnsubmit" value="Download Frequentietabel" onclick="create('f')">
-            <input class="button" type="button" id="btnsubmit" value="Download Sequentietabel" onclick="create('s')">
-            <input class="button" type="button" id="btnsubmit" value="Download Ethogram" onclick="create('e')"> <br><br>
-            <input class="button" type="button" id="btnsubmit" value="Download Allemaal" onclick="create('all')">
+            <input class="button" type="button" id="btnsubmitfreq" value="Download Frequentietabel" onclick="create('f')">
+            <input class="button" type="button" id="btnsubmitseq" value="Download Sequentietabel" onclick="create('s')">
+            <input class="button" type="button" id="btnsubmiteth" value="Download Ethogram" onclick="create('e')"> <br><br>
+            <input class="button" type="button" id="btnsubmitall" value="Download Allemaal" onclick="create('all')">
             <br><br>
             <div id="table" style="display: none;">
 
@@ -42,10 +41,11 @@
         </div>
     </div>
 
-    <div id="loadPopup">
-        <div class="loader"></div> &nbsp; <p id="loadPopupText"></p>
+    <div id="load-pop-up">
+        <div class="loader"></div> &nbsp; <p id="load-pop-up-text"></p>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="js/parse_data.js"></script>
 <script src="js/popup.js"></script>
 <script src="JSZip/vendor/FileSaver.js"></script>
@@ -56,5 +56,4 @@
 <script src="js/create_table.js"></script>
 <script src="js/color_changer.js"></script>
 <script src="js/create.js"></script>
-
 </html>
