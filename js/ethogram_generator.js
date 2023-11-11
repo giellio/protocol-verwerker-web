@@ -1,66 +1,65 @@
-async function processFile(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsText(file);
-        reader.onload = function (event) {
-            const csvdata = event.target.result;
-            const rowData = csvdata.split('\n');
-            const gedragRaw = parse_result(rowData, false);
+async function processFile (file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsText(file)
+    reader.onload = function (event) {
+      const csvdata = event.target.result
+      const rowData = csvdata.split('\n')
+      const gedragRaw = parse_result(rowData, false)
 
-            const elementen = [];
+      const elementen = []
 
-            for (const row of gedragRaw[0]) {
-                for (var x of row) {
-                    x = x.trim();
-                    if (elementen.indexOf(x) == -1) {
-                        elementen.push(x);
-                    }
-                }
-            }
+      for (const row of gedragRaw[0]) {
+        for (let x of row) {
+          x = x.trim()
+          if (elementen.indexOf(x) == -1) {
+            elementen.push(x)
+          }
+        }
+      }
 
-            resolve(elementen);
-        };
-    });
+      resolve(elementen)
+    }
+  })
 }
 
-async function ethogram(files, only = false) {
-    const elementen = [];
-    
-    for (const file of files) {
-        const fileElementen = await processFile(file);
-        elementen.push(...fileElementen);
-    }
+async function ethogram (files, only = false) {
+  const elementen = []
 
-    console.log("elementen");
-    console.log(elementen);
+  for (const file of files) {
+    const fileElementen = await processFile(file)
+    elementen.push(...fileElementen)
+  }
 
-    var ethogram = [["Afkorting", "Gedrag", "Beschrijving"]]
-    for (let index = 0; index < elementen.length; index++) {
-        const element = elementen[index];
-        ethogram.push([element, '', ''])
-    }
+  console.log('elementen')
+  console.log(elementen)
 
-    console.log("ethogram")
-    console.table(ethogram)
+  const ethogram = [['Afkorting', 'Gedrag', 'Beschrijving']]
+  for (let index = 0; index < elementen.length; index++) {
+    const element = elementen[index]
+    ethogram.push([element, '', ''])
+  }
 
-    var csvContent = '';
+  console.log('ethogram')
+  console.table(ethogram)
 
-    ethogram.forEach(function (rowArray) {
-        let row = rowArray.join(",");
-        csvContent += row + "\r\n";
-    });
+  let csvContent = ''
 
-    if (only) {
-        var encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
-        var link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "ethogram.csv");
-        document.body.appendChild(link); // Nodig voor Firefox.
+  ethogram.forEach(function (rowArray) {
+    const row = rowArray.join(',')
+    csvContent += row + '\r\n'
+  })
 
-        link.click(); // Hiermee wordt het gegevensbestand gedownload met de naam "sequentietabel.csv".
-    } else {
-        console.log("return")
-        return csvContent;
-    }
+  if (only) {
+    const encodedUri = encodeURI('data:text/csv;charset=utf-8,' + csvContent)
+    const link = document.createElement('a')
+    link.setAttribute('href', encodedUri)
+    link.setAttribute('download', 'ethogram.csv')
+    document.body.appendChild(link) // Nodig voor Firefox.
 
+    link.click() // Hiermee wordt het gegevensbestand gedownload met de naam "sequentietabel.csv".
+  } else {
+    console.log('return')
+    return csvContent
+  }
 }

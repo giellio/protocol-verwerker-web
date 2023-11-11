@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Patua One', cursive;
-  --colour-primary: #04AA6D;
+  --colour-primary: #04aa6d;
   --colour-secondary: #067a50;
   --colour-background: #999;
   --colour-background-secondary: #555;
@@ -95,8 +95,9 @@ ul.sidenav li.right-nav {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
+
   /* If you want dots under the hoverable text */
+  border-bottom: 1px dotted black;
 }
 
 /* Tooltip text */

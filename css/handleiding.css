@@ -1,16 +1,16 @@
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
 
-img{
-    margin-bottom: 1rem;
+img {
+  margin-bottom: 1rem;
 }
 
-p a{
-    color: blue;
+p a {
+  color: blue;
 }
 
-.container h1{
-    margin-bottom: .5rem;
-    margin-top: 1rem;
+.container h1 {
+  margin-bottom: .5rem;
+  margin-top: 1rem;
 }
