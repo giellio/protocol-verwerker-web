@@ -1,7 +1,8 @@
 # Protocol-Verwerker
 
 ## Stap 1: Exporteren
-Ga naar google spreadsheets, ga naar Bestand -> Downloaden -> Door komma's gescheiden waarden (.csv).
+Ga naar google spreadsheets, ga naar Bestand -> Downloaden -> Door komma's gescheiden waarden (.csv).\
+Kijk voor de bestandsindeling in de [wiki](https://github.com/giellio/protocol-verwerker/wiki/Bestandsindeling)
 
 <img src="src/download-protocol.png" alt="download-protocol" style="width: 50%;">
 
