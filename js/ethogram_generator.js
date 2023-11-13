@@ -12,7 +12,7 @@ async function processFile (file) {
       for (const row of gedragRaw[0]) {
         for (let x of row) {
           x = x.trim()
-          if (elementen.indexOf(x) == -1) {
+          if (elementen.indexOf(x) === -1) {
             elementen.push(x)
           }
         }
@@ -28,7 +28,11 @@ async function ethogram (files, only = false) {
 
   for (const file of files) {
     const fileElementen = await processFile(file)
-    elementen.push(...fileElementen)
+    for (let x of fileElementen) {
+          x = x.trim()
+          if (elementen.indexOf(x) === -1) {
+            elementen.push(x)
+          }
   }
 
   console.log('elementen')
