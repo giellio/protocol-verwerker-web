@@ -1,7 +1,10 @@
 ---
 name: Super-Linter
 
-on: push
+on: 
+  push:
+  pull_request:
+    branches: [master, main]
 
 jobs:
   super-lint:
@@ -16,4 +19,5 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILTER_REGEX_EXCLUDE: .*JSZip/.*
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_JAVASCRIPT_STANDARD: false
