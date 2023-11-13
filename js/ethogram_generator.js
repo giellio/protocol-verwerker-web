@@ -27,7 +27,11 @@ async function ethogram(files, only = false) {
   
   for (const file of files) {
       const fileElementen = await processFile(file);
-      elementen.push(...fileElementen);
+      for (const x of fileElementen) {
+        if (elementen.indexOf(x) === -1) {
+            elementen.push(x);
+        }
+    }
   }
 
   console.log("elementen");
