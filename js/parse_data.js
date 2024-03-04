@@ -32,7 +32,7 @@ function parse_result (rowData, tijd) {
       element = element.split(',')
       if (Array.isArray(element)) {
         for (const x of element) {
-          if (x != ' ') {
+          if (x != ' ' && x != '') {
             // Zet elk element in kleine letters en verwijder witruimte aan het begin en einde, en voeg het toe aan de elementenRow-array.
             elementenRow.push(x.toString().toLowerCase().trim())
           }
