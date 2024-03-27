@@ -1,7 +1,7 @@
-import { ethogram } from "./ethogram_generator"
-import { frequentietabel } from "./frequentietabel_generator"
-import { sequentietabel } from "./sequentietabel_generator"
-import popup from "./popup"
+import { ethogram } from "./ethogram_generator.js"
+import { frequentietabel } from "./frequentietabel_generator.js"
+import { sequentietabel } from "./sequentietabel_generator.js"
+import popup from "./popup.js"
 
 function downloadZip (zip, naam) {
   zip.generateAsync({ type: 'blob' })
