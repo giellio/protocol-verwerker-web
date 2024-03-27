@@ -2,7 +2,7 @@
 // rowData: een array met de rijgegevens uit het bestand.
 // tijd: een boolean-waarde die aangeeft of er tijdsinformatie in dezelfde 2D-array of in een apparte array gegeven moet worden.
 
-export function parse_result (rowData, tijd) {
+function parse_result (rowData, tijd) {
   // Initialiseren van arrays om de resultaten op te slaan.
   const resultTijden = []
   const result = []
@@ -57,3 +57,6 @@ export function parse_result (rowData, tijd) {
     return [result, resultTijden]
   }
 }
+
+export default {parse_result}
+export {parse_result}
