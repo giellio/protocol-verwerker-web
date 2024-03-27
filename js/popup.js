@@ -11,3 +11,5 @@ function closePopup () {
 function popupText (text) {
   document.getElementById('load-pop-up-text').textContent = text
 }
+
+export default{ openPopup, closePopup, popupText }

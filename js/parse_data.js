@@ -57,3 +57,6 @@ function parse_result (rowData, tijd) {
     return [result, resultTijden]
   }
 }
+
+export default { parse_result }
+export { parse_result }

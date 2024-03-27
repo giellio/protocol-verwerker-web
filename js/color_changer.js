@@ -37,3 +37,8 @@ function getColor (id) {
   }
   return color // De gekozen kleur wordt geretourneerd.
 }
+
+export default {changeBackgroundColor, changeTextColor, getColor};
+export {changeBackgroundColor};
+export {changeTextColor};
+export {getColor};

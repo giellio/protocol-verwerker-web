@@ -1,3 +1,7 @@
+import color_changer from "./color_changer"
+import parse_result from "./parse_data"
+import createTable from "./create_table"
+
 // Functie om de frequentietabel te genereren.
 function frequentietabel (file, only = false) {
   return new Promise((resolve, reject) => {
@@ -76,7 +80,7 @@ function frequentietabel (file, only = false) {
                 if (err = 'not in list') {
                   elementen.push(x)
                   if (animatie) {
-                    changeBackgroundColor(getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + '-' + (row.indexOf(x) + 1))
+                    color_changer.changeBackgroundColor(color_changer.getColor(elementen.indexOf(x)), 'protocol-' + gedrag.indexOf(row) + '-' + (row.indexOf(x) + 1))
                     await timer(250)
                   }
                 }
@@ -89,7 +93,7 @@ function frequentietabel (file, only = false) {
 
             for (const row of gedrag) {
               for (const x of row) {
-                changeBackgroundColor(getColor(-1), 'protocol-' + gedrag.indexOf(row) + '-' + (row.indexOf(x) + 1))
+                color_changer.changeBackgroundColor(color_changer.getColor(-1), 'protocol-' + gedrag.indexOf(row) + '-' + (row.indexOf(x) + 1))
               }
             }
           }
@@ -175,12 +179,12 @@ function frequentietabel (file, only = false) {
                   tabel[nietGeteldetabel.indexOf(rij) + 1][elementen.indexOf(element) + 1]++
 
                   if (animatie) {
-                    changeBackgroundColor(getColor(elementen.indexOf(element)), 'frequentie-' + (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1))
+                    color_changer.changeBackgroundColor(color_changer.getColor(elementen.indexOf(element)), 'frequentie-' + (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1))
                     document.getElementById('frequentie-' + (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1)).textContent = tabel[nietGeteldetabel.indexOf(rij) + 1][elementen.indexOf(element) + 1]
 
-                    changeBackgroundColor(getColor(elementen.indexOf(element)), 'teltabel-' + nietGeteldetabel.indexOf(rij) + '-' + (i))
+                    color_changer.changeBackgroundColor(color_changer.getColor(elementen.indexOf(element)), 'teltabel-' + nietGeteldetabel.indexOf(rij) + '-' + (i))
                     await timer(100)
-                    changeBackgroundColor(getColor(-1), 'frequentie-' + (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1))
+                    color_changer.changeBackgroundColor(color_changer.getColor(-1), 'frequentie-' + (nietGeteldetabel.indexOf(rij) + 1) + '-' + (elementen.indexOf(element) + 1))
                   }
                 } throw 'empty'
               } catch (error) {
@@ -224,3 +228,7 @@ function frequentietabel (file, only = false) {
     }
   })
 }
+
+
+export default { frequentietabel }
+export { frequentietabel }

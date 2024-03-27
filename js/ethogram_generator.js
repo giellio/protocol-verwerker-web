@@ -1,3 +1,5 @@
+import { parse_result } from "./parse_data";
+
 async function processFile(file) {
   return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -67,3 +69,6 @@ async function ethogram(files, only = false) {
   }
 
 }
+
+export default {ethogram}
+export {ethogram }

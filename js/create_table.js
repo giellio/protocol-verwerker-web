@@ -34,3 +34,6 @@ function createTable (tableData, idPrefix) {
   content.style.display = 'block' // Stel de weergavestijl in op "block" om ervoor te zorgen dat de tabellen onder elkaar worden weergegeven.
   content.style.margin = 'auto' // Centreer de inhoud van de 'div'.
 }
+
+export default {createTable}
+export {createTable}

@@ -1,3 +1,9 @@
+import { changeBackgroundColor } from "./color_changer"
+import { getColor } from "./color_changer"
+import { changeTextColor } from "./color_changer"
+import { parse_result } from "./parse_data"
+import { createTable } from "./create_table"
+
 // Functie om een sequentietabel te genereren.
 function sequentietabel (file, only = false) {
   return new Promise((resolve, reject) => {
@@ -173,3 +179,6 @@ function sequentietabel (file, only = false) {
     }
   })
 }
+
+export default {sequentietabel}
+export { sequentietabel }
