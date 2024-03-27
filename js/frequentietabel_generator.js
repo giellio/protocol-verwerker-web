@@ -151,7 +151,7 @@ function frequentietabel (file, only = false) {
           tabel.push(elemtenRow)
 
           // Tel de elementen binnen hun frequentie.
-          for (rij of nietGeteldetabel) {
+          for (let rij of nietGeteldetabel) {
             const elementenRow = []
             for (let i = 0; i < elementen.length; i++) {
               elementenRow[i] = 0
