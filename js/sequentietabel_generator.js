@@ -107,7 +107,7 @@ function sequentietabel (file, only = false) {
         let huidigeElement; let huidigId; let laatsteElement = ''; let laatsteId = ''; let vorigId = ''
 
         for (const rij of gedrag) {
-          for (i = 0; i < rij.length; i++) {
+          for (let i = 0; i < rij.length; i++) {
             huidigeElement = rij[i]
             huidigId = 'protocol-' + gedrag.indexOf(rij) + '-' + (i + 1)
             if (animatie) changeBackgroundColor(getColor(elementen.indexOf(huidigeElement)), huidigId)

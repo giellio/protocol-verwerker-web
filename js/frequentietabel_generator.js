@@ -53,7 +53,7 @@ function frequentietabel (file, only = false) {
         if (animatie) createTable(visueel, 'protocol')
 
         // Verzamel de tijden voor de headers van de tijdsintervallen.
-        for (i = 0; i < alleTijden.length; i += interval) {
+        for (let i = 0; i < alleTijden.length; i += interval) {
           if (i + interval - 1 < alleTijden.length) {
             tijden.push(alleTijden[i] + '-' + alleTijden[i + interval - 1])
           } else {
@@ -102,9 +102,9 @@ function frequentietabel (file, only = false) {
           let nietGeteldetabel = []
 
           // Verzamel alle gedragselementen binnen een interval.
-          for (i = 0; i < (gedrag.length); i += interval) {
+          for (let i = 0; i < (gedrag.length); i += interval) {
             const elementenInterval = []
-            for (j = 0; j < interval; j++) {
+            for (let j = 0; j < interval; j++) {
               elementenInterval.push(gedrag[i + j])
             }
             nietGeteldetabel.push(elementenInterval)
@@ -153,7 +153,7 @@ function frequentietabel (file, only = false) {
           // Tel de elementen binnen hun frequentie.
           for (rij of nietGeteldetabel) {
             const elementenRow = []
-            for (i = 0; i < elementen.length; i++) {
+            for (let i = 0; i < elementen.length; i++) {
               elementenRow[i] = 0
             }
             tabel.push(elementenRow)
@@ -171,7 +171,7 @@ function frequentietabel (file, only = false) {
 
           // Vul de frequentietabel in
           for (const rij of nietGeteldetabel) {
-            for (i = 1; i < rij.length; i++) {
+            for (let i = 1; i < rij.length; i++) {
               // Voor ieder element, voeg 1 toe aan het element in de tabel, op basis van zijn index en zet dit vervolgens in de tabel op de html pagina. Verander vervolgens ook de achtergrond kleur van de element.
               try {
                 const element = rij[i]
