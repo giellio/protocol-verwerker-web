@@ -94,5 +94,9 @@ async function create (type) {
   }
 }
 
+document.getElementById('btnsubmitfreq').addEventListener("click", () => {create("f")})
+document.getElementById('btnsubmitseq').addEventListener("click", () => {create("s")})
+document.getElementById('btnsubmiteth').addEventListener("click", () => {create("e")})
+document.getElementById('btnsubmitall').addEventListener("click", () => {create("all")})
+
 export default {create}
-export {create}
