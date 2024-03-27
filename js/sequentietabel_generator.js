@@ -1,8 +1,8 @@
-import { changeBackgroundColor } from "./color_changer"
-import { getColor } from "./color_changer"
-import { changeTextColor } from "./color_changer"
-import { parse_result } from "./parse_data"
-import { createTable } from "./create_table"
+import { changeBackgroundColor } from "./color_changer.js"
+import { getColor } from "./color_changer.js"
+import { changeTextColor } from "./color_changer.js"
+import { parse_result } from "./parse_data.js"
+import { createTable } from "./create_table.js"
 
 // Functie om een sequentietabel te genereren.
 function sequentietabel (file, only = false) {

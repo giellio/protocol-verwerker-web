@@ -1,6 +1,6 @@
-import color_changer from "./color_changer"
-import parse_result from "./parse_data"
-import createTable from "./create_table"
+import color_changer from "./color_changer.js"
+import parse_result from "./parse_data.js"
+import createTable from "./create_table.js"
 
 // Functie om de frequentietabel te genereren.
 function frequentietabel (file, only = false) {

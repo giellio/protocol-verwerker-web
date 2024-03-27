@@ -1,4 +1,4 @@
-import { parse_result } from "./parse_data";
+import { parse_result } from "./parse_data.js";
 
 async function processFile(file) {
   return new Promise((resolve, reject) => {
